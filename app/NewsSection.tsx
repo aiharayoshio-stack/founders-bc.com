@@ -12,8 +12,8 @@ type NewsItem = {
 
 const newsItems: NewsItem[] = [
   {
-    date: "2026/06/12",
-    title: "【チーム】第97回都市対抗野球大会 本大会出場決定のお知らせ",
+    date: "2024/03/01",
+    title: "「FOUNDERS」創部のお知らせ",
     category: "Team",
     summary: "本大会出場に向けて、チーム一丸となって準備を進めています。",
     body: [
@@ -22,8 +22,8 @@ const newsItems: NewsItem[] = [
     ],
   },
   {
-    date: "2026/06/03",
-    title: "【チーム/日程変更】第97回都市対抗野球大会 東海地区2次予選 試合日程について",
+    date: "2024/03/09",
+    title: "「IT LEAGUE」に参加しました",
     category: "Schedule",
     summary: "東海地区2次予選の試合日程に変更があります。",
     body: [
@@ -32,8 +32,8 @@ const newsItems: NewsItem[] = [
     ],
   },
   {
-    date: "2026/05/28",
-    title: "【チーム】西階公園野球場 オープン記念式典に参加！野球教室も開催！",
+    date: "2025/07/10",
+    title: "スポンサード契約についてのお知らせ",
     category: "Event",
     summary: "地域の皆さまと一緒に、野球の楽しさを共有しました。",
     body: [
@@ -42,8 +42,8 @@ const newsItems: NewsItem[] = [
     ],
   },
   {
-    date: "2026/05/22",
-    title: "【チーム】東海地区2次予選 チケットに関してのご案内",
+    date: "2025/07/10",
+    title: "スポンサード契約についてのお知らせ",
     category: "Ticket",
     summary: "予選観戦チケットに関する基本情報をまとめました。",
     body: [
@@ -52,13 +52,23 @@ const newsItems: NewsItem[] = [
     ],
   },
   {
-    date: "2026/05/27",
-    title: "パートナー企業についてのお知らせ",
+    date: "2025/11/15",
+    title: "「IT LEAGUE 2025」 で優勝を飾りました！",
     category: "Partner",
     summary: "チーム活動を支えてくださるパートナー企業を募集しています。",
     body: [
       "チームの活動理念に共感し、ともに地域スポーツを盛り上げてくださるパートナー企業を募集しています。",
       "ロゴ掲載、イベント連携、SNSでの紹介など、チームの成長に合わせた協賛メニューを準備しています。",
+    ],
+  },
+  {
+    date: "2026/04/01",
+    title: "「プライドジャパンドリームカップ2026（東京都予選）」出場のお知らせ",
+    category: "Team",
+    summary: "本大会出場に向けて、チーム一丸となって準備を進めています。",
+    body: [
+      "第97回都市対抗野球大会の本大会出場が決定しました。日頃より応援いただいている皆さまに、心より感謝申し上げます。",
+      "本大会ではPLAY BOLDのスローガンを胸に、最後まで攻める姿勢を貫きます。試合情報や応援案内は、詳細が決まり次第お知らせします。",
     ],
   },
 ];
@@ -67,6 +77,7 @@ export function NewsSection() {
   const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null);
   const [isModalClosing, setIsModalClosing] = useState(false);
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const sortedNewsItems = [...newsItems].sort((left, right) => right.date.localeCompare(left.date));
 
   const openNewsModal = (item: NewsItem) => {
     if (closeTimerRef.current) {
@@ -124,8 +135,8 @@ export function NewsSection() {
         <h2>チームニュース</h2>
       </div>
       <div className="newsList">
-        {newsItems.map((item) => (
-          <button className="newsItem" key={item.title} onClick={() => openNewsModal(item)} type="button">
+        {sortedNewsItems.map((item, index) => (
+          <button className="newsItem" key={`${item.date}-${item.title}-${index}`} onClick={() => openNewsModal(item)} type="button">
             <time>{item.date}</time>
             <span className="newsDivider" aria-hidden="true" />
             <h3>{item.title}</h3>

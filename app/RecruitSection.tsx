@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const recruitment = ["選手・マネージャー", "練習試合", "スポンサー", "メディア"];
+const recruitment = ["選手・マネージャ・コーチ", "練習試合", "スポンサー", "メディア"];
 
 export function RecruitSection() {
   const [isFormOpen, setIsFormOpen] = useState(false);

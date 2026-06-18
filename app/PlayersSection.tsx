@@ -23,69 +23,125 @@ type Player = {
   salesPoint: string;
 };
 
-type PlayerBase = Pick<Player, "position" | "role" | "detail" | "style" | "profile">;
+type RosterEntry = Pick<Player, "number" | "name" | "romanName" | "position"> &
+  Partial<
+    Pick<Player, "throwingBatting" | "school" | "birthdate" | "birthplace" | "body" | "department" | "salesPoint">
+  >;
 
 const positions: Position[] = ["投手", "捕手", "内野手", "外野手"];
-const familyNames = ["渕上", "高橋", "佐藤", "田中", "鈴木", "山本", "中村", "小林", "加藤", "伊藤"];
-const givenNames = ["佳輝", "翔太", "大和", "蓮", "悠真", "拓海", "颯太", "陸", "陽翔", "一真"];
-const romanFamilyNames = ["FUCHIGAMI", "TAKAHASHI", "SATO", "TANAKA", "SUZUKI", "YAMAMOTO", "NAKAMURA", "KOBAYASHI", "KATO", "ITO"];
-const romanGivenNames = ["YOSHIKI", "SHOTA", "YAMATO", "REN", "YUMA", "TAKUMI", "SOTA", "RIKU", "HARUTO", "KAZUMA"];
 
-const positionProfiles: PlayerBase[] = [
-  {
-    position: "投手",
+const positionProfiles: Record<Position, Omit<Player, "number" | "name" | "romanName" | "position">> = {
+  投手: {
     role: "Pitcher",
-    detail: "マウンドから流れを作る、勝負どころの一枚。",
+    detail: "マウンドから試合の流れを作る投手メンバー。",
     style: "Power / Control",
     profile:
       "テンポよくストライクを重ね、守備からチームのリズムを作るタイプ。大事な場面で腕を振れる強さを武器にします。",
+    joined: "2026",
+    throwingBatting: "右投右打",
+    school: "プロフィール準備中",
+    birthdate: "プロフィール準備中",
+    birthplace: "プロフィール準備中",
+    body: "プロフィール準備中",
+    department: "プロフィール準備中",
+    salesPoint: "マウンドで流れを作る投球",
   },
-  {
-    position: "捕手",
+  捕手: {
     role: "Catcher",
     detail: "守備の中心として試合を読む、頼れる司令塔。",
     style: "Lead / Block",
     profile:
       "投手の良さを引き出しながら、試合全体を落ち着いて組み立てる存在。細かな声かけでチームを締めます。",
+    joined: "2026",
+    throwingBatting: "右投右打",
+    school: "プロフィール準備中",
+    birthdate: "プロフィール準備中",
+    birthplace: "プロフィール準備中",
+    body: "プロフィール準備中",
+    department: "プロフィール準備中",
+    salesPoint: "守備の中心として試合を動かすリード",
   },
-  {
-    position: "内野手",
+  内野手: {
     role: "Infielder",
     detail: "堅実な守備と勝負強い打撃で内野を締める。",
     style: "Glove / Contact",
     profile:
       "一歩目の反応と送球の安定感で流れを切らさないプレーヤー。攻撃ではつなぐ意識を大切にします。",
+    joined: "2026",
+    throwingBatting: "右投右打",
+    school: "プロフィール準備中",
+    birthdate: "プロフィール準備中",
+    birthplace: "プロフィール準備中",
+    body: "プロフィール準備中",
+    department: "プロフィール準備中",
+    salesPoint: "堅実な守備と勝負強い打撃",
   },
-  {
-    position: "外野手",
+  外野手: {
     role: "Outfielder",
     detail: "広い守備範囲と走力でチャンスを広げる。",
     style: "Speed / Range",
     profile:
       "広いフィールドをカバーし、長打を防ぐ守備範囲が持ち味。走塁でも次の塁を狙う姿勢を見せます。",
+    joined: "2026",
+    throwingBatting: "右投右打",
+    school: "プロフィール準備中",
+    birthdate: "プロフィール準備中",
+    birthplace: "プロフィール準備中",
+    body: "プロフィール準備中",
+    department: "プロフィール準備中",
+    salesPoint: "広い守備範囲と積極的な走塁",
   },
+};
+
+const rosterEntries: RosterEntry[] = [
+  { number: "26", name: "金子 晋也", romanName: "KANEKO SHINYA", position: "外野手" },
+  { number: "55", name: "北尾 共", romanName: "KITAO TOMO", position: "外野手" },
+  { number: "42", name: "西田 燎平", romanName: "NISHIDA RYOHEI", position: "内野手" },
+  { number: "9", name: "片岡 宏斗", romanName: "KATAOKA HIROTO", position: "内野手" },
+  { number: "50", name: "磯田 将太", romanName: "ISODA SHOTA", position: "内野手" },
+  { number: "1", name: "橋本 駿", romanName: "HASHIMOTO SHUN", position: "外野手" },
+  { number: "25", name: "宮城 圭介", romanName: "MIYAGI KEISUKE", position: "捕手" },
+  {
+    number: "3",
+    name: "相原 嘉夫",
+    romanName: "AIHARA YOSHIO",
+    position: "内野手",
+    throwingBatting: "右投右打",
+    school: "明徳義塾中-浦和学院高",
+    birthdate: "1995年12月8日",
+    birthplace: "神奈川県川崎市",
+    body: "171cm/70kg",
+    department: "起業家",
+    salesPoint: "勝負強い打撃",
+  },
+  { number: "27", name: "児山 一樹", romanName: "KOYAMA KAZUKI", position: "捕手" },
+  { number: "29", name: "毛利 拓樹", romanName: "MOURI TAKUKI", position: "投手" },
+  { number: "23", name: "山木 陸生", romanName: "YAMAKI RIKUO", position: "外野手" },
+  { number: "10", name: "小林 晃", romanName: "KOBAYASHI AKIRA", position: "捕手" },
+  { number: "6", name: "スティーブコバヤシ", romanName: "STEVE KOBAYASHI", position: "外野手" },
+  { number: "66", name: "小澤 真彦", romanName: "OZAWA MASAHIKO", position: "外野手" },
+  { number: "36", name: "井上 隆太朗", romanName: "INOUE RYUTARO", position: "内野手" },
+  { number: "99", name: "甚野 広行", romanName: "JINNO HIROYUKI", position: "内野手" },
+  { number: "4", name: "辻江 樹生", romanName: "TSUJIE TATSUKI", position: "内野手" },
+  { number: "51", name: "長谷川 大将", romanName: "HASEGAWA DAISUKE", position: "外野手" },
+  { number: "33", name: "伊藤 聡", romanName: "ITO SATOSHI", position: "内野手" },
+  { number: "2", name: "伊藤 源一", romanName: "ITO GENICHI", position: "内野手" },
+  { number: "16", name: "塚田 淳矢", romanName: "TSUKADA JUNYA", position: "投手" },
+  { number: "17", name: "山田 優大", romanName: "YAMADA YUDAI", position: "投手" },
+  { number: "19", name: "翁 安毅", romanName: "OKINA YASUTAKE", position: "投手" },
+  { number: "21", name: "滝島 大貴", romanName: "TAKISHIMA DAIKI", position: "投手" },
+  { number: "13", name: "髙木 聡吾", romanName: "TAKAGI SOGO", position: "外野手" },
+  { number: "7", name: "結束 大智", romanName: "KESSOKU DAICHI", position: "外野手" },
 ];
 
-const players: Player[] = positionProfiles.flatMap((profile, positionIndex) =>
-  Array.from({ length: 6 }, (_, memberIndex) => {
-    const index = positionIndex * 6 + memberIndex + 1;
+const comparePlayersByNumber = (left: Player, right: Player) => Number(left.number) - Number(right.number);
 
-    return {
-      ...profile,
-      number: String(index).padStart(2, "0"),
-      name: `${familyNames[index % familyNames.length]} ${givenNames[index % givenNames.length]}`,
-      romanName: `${romanFamilyNames[index % romanFamilyNames.length]} ${romanGivenNames[index % romanGivenNames.length]}`,
-      joined: `20${24 + (memberIndex % 3)}`,
-      throwingBatting: profile.position === "投手" ? "右投右打" : memberIndex % 2 === 0 ? "右投左打" : "右投右打",
-      school: `${["星稜高校", "桐蔭学園高校", "横浜高校", "東海大相模高校", "明徳義塾高校"][memberIndex % 5]} - ${["星槎道都大学", "日本体育大学", "亜細亜大学", "立正大学", "専修大学"][positionIndex % 5]}`,
-      birthdate: `199${6 + (memberIndex % 4)}年${6 + (memberIndex % 6)}月${12 + memberIndex}日`,
-      birthplace: ["神奈川県", "東京都", "千葉県", "埼玉県", "静岡県"][memberIndex % 5],
-      body: `${172 + memberIndex}cm/${74 + positionIndex + memberIndex}kg`,
-      department: `${["本社工場", "営業部", "管理部"][memberIndex % 3]}　町いちばんG`,
-      salesPoint: profile.position === "投手" ? "直球と変化球のコンビネーション" : profile.detail,
-    };
-  }),
-);
+const players: Player[] = rosterEntries
+  .map((entry) => ({
+    ...positionProfiles[entry.position],
+    ...entry,
+  }))
+  .sort(comparePlayersByNumber);
 
 const pitchMetrics = [
   ["球速", "163 km/h"],
@@ -258,7 +314,7 @@ export function PlayersSection() {
         {filteredPlayers.map((player) => (
           <button
             className="playerCard"
-            key={player.number}
+            key={`${player.number}-${player.name}`}
             onClick={() => openPlayerModal(player)}
             type="button"
           >
@@ -346,12 +402,12 @@ export function PlayersSection() {
             <div className="modalPlayerInfo">
               <dl className="profileDataList">
                 {[
-                  ["最終学歴", selectedPlayer.school],
+                  ["球歴 / 学歴", selectedPlayer.school],
                   ["生年月日", selectedPlayer.birthdate],
                   ["出身地", selectedPlayer.birthplace],
                   ["身長 / 体重", selectedPlayer.body],
                   ["職業", selectedPlayer.department],
-                  ["おれのここを見てくれ！", selectedPlayer.salesPoint],
+                  ["俺のここを見てくれ！", selectedPlayer.salesPoint],
                 ].map(([label, value]) => (
                   <div className="profileDataRow" key={label}>
                     <dt>{label}</dt>

@@ -57,7 +57,7 @@ export default function Home() {
           <nav aria-label="メインナビゲーション" className="topNav">
             <a href="#news">News</a>
             <a href="#players">Players</a>
-            <a href="#recruit">Recruit</a>
+            <a href="#recruit">Contact</a>
             <a href="#sponsor">Sponsor</a>
           </nav>
         </header>
