@@ -1001,13 +1001,22 @@ main {
   color: #fff7df;
   cursor: pointer;
   font: inherit;
-  font-size: 32px;
+  font-size: 0;
   font-weight: 600;
-  line-height: 1;
+  line-height: 0;
   transition:
     background 180ms ease,
     border-color 180ms ease,
     box-shadow 180ms ease;
+}
+
+.photoNavButton::before {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border: solid currentColor;
+  border-width: 0 3px 3px 0;
+  content: "";
 }
 
 .photoNavButton:hover {
@@ -1025,8 +1034,16 @@ main {
   left: 14px;
 }
 
+.photoNavPrevious::before {
+  transform: translateX(2px) rotate(135deg);
+}
+
 .photoNavNext {
   right: 14px;
+}
+
+.photoNavNext::before {
+  transform: translateX(-2px) rotate(-45deg);
 }
 
 .photoDots {
@@ -2217,7 +2234,7 @@ main {
   .photoNavButton {
     width: 36px;
     height: 36px;
-    font-size: 28px;
+    font-size: 0;
   }
 
   .modalPlayerInfo {
