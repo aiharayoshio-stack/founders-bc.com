@@ -1991,21 +1991,22 @@ main {
 @media (max-width: 760px) {
   .hero {
     min-height: 92svh;
-    padding: 154px 20px 38px;
+    padding: 136px 20px 38px;
     align-items: flex-end;
     flex-direction: column;
     justify-content: flex-end;
   }
 
   .siteHeader {
-    top: 18px;
-    left: 20px;
-    right: 20px;
+    top: 14px;
+    left: 16px;
+    right: 16px;
+    align-items: flex-end;
   }
 
   .brandLogo {
-    width: 173px;
-    height: 173px;
+    width: 112px;
+    height: 112px;
   }
 
   .brand small {
@@ -2013,13 +2014,17 @@ main {
   }
 
   .topNav {
-    width: 173px;
-    margin-top: -18px;
+    width: 112px;
+    gap: 2px;
+    margin-top: -8px;
     overflow: visible;
   }
 
   .topNav a {
+    min-height: 30px;
     min-width: max-content;
+    padding: 0 4px;
+    font-size: 11px;
   }
 
   .heroShade {
@@ -2039,6 +2044,11 @@ main {
 
   .playBoldLogo {
     height: clamp(180px, 52vw, 280px);
+    object-position: center;
+  }
+
+  .heroContent {
+    width: 100%;
   }
 
   .heroSlide figcaption {
@@ -2052,6 +2062,7 @@ main {
 
   .heroActions {
     margin-left: 0;
+    margin-top: 24px;
     width: 100%;
   }
 
@@ -2271,12 +2282,34 @@ main {
   }
 
   .xCard {
+    display: grid;
     align-items: stretch;
     grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px 18px;
   }
 
   .xFrame {
+    min-width: 0;
     width: 100%;
+  }
+
+  .xEmbedLive {
+    min-height: 390px;
+  }
+
+  .xEmbedLive iframe {
+    height: 390px !important;
+    min-height: 390px !important;
+  }
+
+  .xEmbedLive > .twitter-timeline-rendered {
+    min-height: 390px !important;
+  }
+
+  .xPreviewFallback {
+    gap: 10px;
+    padding: 16px;
   }
 
   .siteCopyright {
