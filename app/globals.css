@@ -2116,8 +2116,8 @@ main {
   }
 
   .brandLogo {
-    width: 102px;
-    height: 102px;
+    width: 112px;
+    height: 112px;
   }
 
   .brand small {
@@ -2125,18 +2125,18 @@ main {
   }
 
   .topNav {
-    width: min(100%, 350px);
-    flex-direction: row;
-    justify-content: center;
-    gap: 8px;
+    display: grid;
+    width: min(100%, 328px);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
     margin-top: 0;
     overflow: visible;
   }
 
   .topNav a {
     min-height: 28px;
-    min-width: max-content;
-    padding: 0 3px;
+    min-width: 0;
+    padding: 0 2px;
     font-size: 11px;
   }
 
