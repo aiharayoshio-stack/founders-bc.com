@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { SitePreloader } from "./SitePreloader";
 
 export const metadata: Metadata = {
   title: "PLAY BOLD | Baseball Team LP",
@@ -18,7 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body>{children}</body>
+      <body className="sitePreloading">
+        <SitePreloader />
+        {children}
+      </body>
     </html>
   );
 }
