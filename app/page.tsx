@@ -23,7 +23,16 @@ const heroSlides = [
   },
 ];
 
-const sponsors = ["GOLD PARTNER", "BLACK PARTNER", "LOCAL SUPPORTER"];
+const sponsors = [
+  {
+    name: "Partners Fund",
+    src: "/partner-fund-logo.png",
+  },
+  {
+    name: "BuyerX",
+    src: "/buyerx-logo.png",
+  },
+];
 
 export default function Home() {
   return (
@@ -46,26 +55,21 @@ export default function Home() {
         <div className="heroShade" />
 
         <header className="siteHeader">
-          <a className="brand" href="#top" aria-label="トップへ戻る">
-            <span className="brandMark">BT</span>
-            <span>
-              <strong>BASEBALL TEAM</strong>
-              <small>Official Landing Page</small>
-            </span>
+          <a className="brand" href="#top" aria-label="FOUNDERS トップへ戻る">
+            <img className="brandLogo" src="/founders-boxlogo.png" alt="FOUNDERS" width="86" height="86" />
           </a>
 
           <nav aria-label="メインナビゲーション" className="topNav">
-            <a href="#news">News</a>
-            <a href="#players">Players</a>
-            <a href="#recruit">Contact</a>
-            <a href="#sponsor">Sponsor</a>
+            <a href="#news">NEWS</a>
+            <a href="#players">PLAYERS</a>
+            <a href="#recruit">CONTACT</a>
+            <a href="#sponsor">SPONSOR</a>
           </nav>
         </header>
 
         <div className="heroContent">
-          <h1 aria-label="PLAY BOLD" className="sloganTitle" data-shadow="PLAY BOLD">
-            <span>PLAY</span>
-            <span>BOLD</span>
+          <h1 aria-label="PLAY BOLD" className="sloganTitle">
+            <img className="playBoldLogo" src="/playbold-logo.png?v=20260623" alt="PLAY BOLD" width="983" height="662" />
           </h1>
           <div className="heroActions">
             <a className="primaryAction heroCta" href="#players">
@@ -129,23 +133,14 @@ export default function Home() {
         </div>
         <div className="sponsorGrid">
           {sponsors.map((sponsor) => (
-            <div className="sponsorSlot" key={sponsor}>
-              {sponsor}
+            <div className="sponsorSlot" key={sponsor.name}>
+              <img className="sponsorLogo" src={sponsor.src} alt={sponsor.name} />
             </div>
           ))}
         </div>
       </section>
 
-      <footer className="footer" id="footer">
-        <div className="footerBrand">
-          <span className="brandMark">BT</span>
-          <div>
-            <strong>BASEBALL TEAM</strong>
-            <small>PLAY BOLD</small>
-          </div>
-        </div>
-        <p className="footerCopy">© 2026 Baseball Team. All rights reserved.</p>
-      </footer>
+      <p className="siteCopyright">© FOUNDERS Baseball Club. All rights reserved.</p>
     </main>
   );
 }

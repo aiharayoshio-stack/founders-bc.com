@@ -131,9 +131,9 @@ main {
   right: 32px;
   z-index: 2;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0;
 }
 
 .brand {
@@ -141,6 +141,14 @@ main {
   align-items: center;
   gap: 12px;
   min-width: 0;
+}
+
+.brandLogo {
+  display: block;
+  width: 206px;
+  height: 206px;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.48));
 }
 
 .brandMark {
@@ -178,12 +186,12 @@ main {
 
 .topNav {
   display: flex;
+  width: 206px;
+  flex-direction: column;
   align-items: center;
-  gap: 6px;
-  border: 1px solid rgba(215, 180, 106, 0.22);
-  background: rgba(9, 9, 9, 0.66);
-  padding: 6px;
-  backdrop-filter: blur(18px);
+  gap: 4px;
+  margin-top: -20px;
+  padding: 0;
 }
 
 .topNav a {
@@ -191,6 +199,7 @@ main {
   display: inline-flex;
   min-height: 36px;
   align-items: center;
+  justify-content: center;
   padding: 0 12px;
   color: #eee6d2;
   font-size: 13px;
@@ -222,7 +231,7 @@ main {
 }
 
 .heroContent {
-  width: min(720px, 100%);
+  width: min(1040px, calc(100vw - 64px));
   position: relative;
   z-index: 1;
 }
@@ -241,8 +250,7 @@ main {
 .introBand h2,
 .sectionHeader h2,
 .recruitBand h2,
-.xCard h2,
-.footer h2 {
+.xCard h2 {
   margin: 0;
   color: #fff7df;
   font-weight: 950;
@@ -256,44 +264,21 @@ main {
   word-break: keep-all;
 }
 
-.hero h1 span {
-  display: block;
-}
-
 .hero .sloganTitle {
   position: relative;
   isolation: isolate;
-  max-width: 820px;
-  font-size: clamp(108px, 12.5vw, 172px);
-  line-height: 0.76;
-  text-shadow:
-    0 2px 0 rgba(215, 180, 106, 0.18),
-    0 20px 52px rgba(0, 0, 0, 0.66);
+  width: min(660px, 64vw);
+  max-width: 100%;
+  line-height: 0;
 }
 
-.hero .sloganTitle::before {
-  content: attr(data-shadow);
-  position: absolute;
-  left: -0.05em;
-  top: -0.17em;
-  z-index: -1;
-  width: 1px;
-  color: transparent;
-  font-size: 0.82em;
-  line-height: 0.78;
-  -webkit-text-stroke: 1px rgba(240, 201, 111, 0.2);
-  text-shadow: 0 0 54px rgba(240, 201, 111, 0.16);
-  white-space: pre;
-}
-
-.hero .sloganTitle span:first-child {
-  color: #fff8e6;
-}
-
-.hero .sloganTitle span:last-child {
-  background: linear-gradient(90deg, #fff8e6 0%, #f0c96f 48%, #b9822f 100%);
-  background-clip: text;
-  color: transparent;
+.playBoldLogo {
+  display: block;
+  width: 100%;
+  height: clamp(250px, 31vw, 380px);
+  object-fit: contain;
+  object-position: left center;
+  filter: drop-shadow(0 20px 48px rgba(0, 0, 0, 0.58));
 }
 
 .lead {
@@ -309,6 +294,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
+  margin-left: 24px;
   margin-top: 40px;
 }
 
@@ -401,8 +387,7 @@ main {
 .playersBand,
 .recruitBand,
 .socialBand,
-.sponsorBand,
-.footer {
+.sponsorBand {
   padding: 82px 32px;
 }
 
@@ -426,7 +411,6 @@ main {
 .recruitContent,
 .xCard,
 .sponsorGrid,
-.footer > div,
 .mailLink {
   position: relative;
   z-index: 1;
@@ -435,8 +419,7 @@ main {
 .introBand h2,
 .sectionHeader h2,
 .recruitBand h2,
-.xCard h2,
-.footer h2 {
+.xCard h2 {
   font-size: 44px;
 }
 
@@ -1929,28 +1912,39 @@ main {
 
 .sponsorGrid {
   display: grid;
-  max-width: 1120px;
+  max-width: 980px;
   margin: 0 auto;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
 }
 
 .sponsorSlot {
   display: flex;
-  min-height: 126px;
+  min-height: 150px;
   align-items: center;
   justify-content: center;
   border: 1px solid rgba(215, 180, 106, 0.22);
   border-radius: 8px;
-  background: #111111;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(215, 180, 106, 0.12), transparent 56%),
+    #050505;
   color: #776d5b;
   font-size: 15px;
   font-weight: 950;
   letter-spacing: 0;
+  padding: 28px 34px;
   transition:
     border-color 180ms ease,
     color 180ms ease,
     box-shadow 180ms ease;
+}
+
+.sponsorLogo {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  max-height: 92px;
+  object-fit: contain;
 }
 
 .sponsorSlot:hover {
@@ -1959,51 +1953,13 @@ main {
   box-shadow: 0 0 24px rgba(215, 180, 106, 0.14);
 }
 
-.footer {
-  display: grid;
-  min-height: 220px;
-  grid-template-columns: minmax(220px, 1fr) minmax(180px, auto);
-  align-items: end;
-  gap: 28px;
-  border-top: 1px solid var(--line);
-  background:
-    radial-gradient(ellipse at 14% 20%, rgba(215, 180, 106, 0.14), transparent 38%),
-    linear-gradient(90deg, rgba(215, 180, 106, 0.1), transparent 42%),
-    #050505;
-}
-
-.footerBrand {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.footerBrand strong,
-.footerBrand small {
-  display: block;
-  letter-spacing: 0;
-}
-
-.footerBrand strong {
-  color: #fff7df;
-  font-size: 16px;
-  font-weight: 950;
-}
-
-.footerBrand small {
-  margin-top: 4px;
-  color: var(--gold-strong);
-  font-size: 12px;
-  font-weight: 950;
-}
-
-.footerCopy {
-  justify-self: end;
+.siteCopyright {
   margin: 0;
+  padding: 26px 32px 34px;
   color: rgba(185, 176, 160, 0.74);
   font-size: 12px;
   font-weight: 800;
-  text-align: right;
+  text-align: center;
 }
 
 .mailLink {
@@ -2012,13 +1968,11 @@ main {
 
 @media (max-width: 980px) {
   .siteHeader {
-    align-items: flex-start;
-    flex-direction: column;
+    align-items: flex-end;
   }
 
   .topNav {
-    width: 100%;
-    justify-content: space-between;
+    max-width: 100%;
   }
 
   .hero {
@@ -2049,13 +2003,19 @@ main {
     right: 20px;
   }
 
+  .brandLogo {
+    width: 173px;
+    height: 173px;
+  }
+
   .brand small {
     display: none;
   }
 
   .topNav {
-    overflow-x: auto;
-    justify-content: flex-start;
+    width: 173px;
+    margin-top: -18px;
+    overflow: visible;
   }
 
   .topNav a {
@@ -2074,8 +2034,11 @@ main {
   }
 
   .hero .sloganTitle {
-    max-width: 350px;
-    font-size: 74px;
+    width: min(100%, 520px);
+  }
+
+  .playBoldLogo {
+    height: clamp(180px, 52vw, 280px);
   }
 
   .heroSlide figcaption {
@@ -2088,6 +2051,7 @@ main {
   }
 
   .heroActions {
+    margin-left: 0;
     width: 100%;
   }
 
@@ -2102,8 +2066,7 @@ main {
   .playersBand,
   .recruitBand,
   .socialBand,
-  .sponsorBand,
-  .footer {
+  .sponsorBand {
     padding: 58px 20px;
   }
 
@@ -2115,8 +2078,7 @@ main {
   .introBand h2,
   .sectionHeader h2,
   .recruitBand h2,
-  .xCard h2,
-  .footer h2 {
+  .xCard h2 {
     font-size: 34px;
   }
 
@@ -2308,8 +2270,7 @@ main {
     margin-right: 44px;
   }
 
-  .xCard,
-  .footer {
+  .xCard {
     align-items: stretch;
     grid-template-columns: 1fr;
   }
@@ -2318,9 +2279,8 @@ main {
     width: 100%;
   }
 
-  .footerCopy {
-    justify-self: start;
-    text-align: left;
+  .siteCopyright {
+    padding: 22px 20px 30px;
   }
 }
 
