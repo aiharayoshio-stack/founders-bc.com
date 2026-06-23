@@ -222,7 +222,6 @@ const rosterEntries: RosterEntry[] = [
     body: "181cm/86kg",
     salesPoint: "肩幅",
   },
-  { number: "23", name: "山木 陸生", romanName: "YAMAKI RIKUO", position: "外野手" },
   {
     number: "8",
     name: "池田 章人",
