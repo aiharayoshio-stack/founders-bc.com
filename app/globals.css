@@ -503,6 +503,7 @@ main {
 
 .introBand {
   display: grid;
+  align-items: center;
   grid-template-columns: minmax(520px, 0.95fr) minmax(300px, 0.9fr);
   gap: 48px;
   border-top: 1px solid var(--line);
@@ -2205,6 +2206,7 @@ main {
 
   .introBand,
   .recruitBand {
+    align-items: start;
     grid-template-columns: 1fr;
   }
 
