@@ -369,7 +369,7 @@ const rosterEntries: RosterEntry[] = [
     number: "19",
     name: "翁 安毅",
     romanName: "YASUTAKE OH",
-    position: "外野手",
+    position: "内野手",
     throwingBatting: "右投右打",
     school: "小田原高 - 慶應義塾大",
     birthdate: "2002/05/27",
